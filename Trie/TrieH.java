@@ -1,8 +1,5 @@
 package Trie;
 
-
-import sun.text.normalizer.Trie;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 

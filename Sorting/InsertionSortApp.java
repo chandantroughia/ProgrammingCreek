@@ -1,15 +1,15 @@
 package Sorting;
 
-public class MergesortApp {
+public class InsertionSortApp {
     public static void printArray(int[] arr){
         for(int i: arr){
             System.out.print(i + " ");
         }
     }
     public static void main(String[] args) {
-        MergeSort ms = new MergeSort();
+        InsertionSort is = new InsertionSort();
         int[] arr = {3,2,7,6,5,4,9,1};
-        ms.sort(arr);
+        is.sort(arr);
         System.out.println("Merge Sort: ");
         printArray(arr);
     }

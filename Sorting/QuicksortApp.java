@@ -10,6 +10,7 @@ public class QuicksortApp {
         QuickSort qs = new QuickSort();
         int[] arr = {3,2,7,6,5,4,9,1};
         qs.sort(arr);
+        System.out.println("Quick Sort: ");
         printArray(arr);
     }
 }

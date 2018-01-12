@@ -66,19 +66,19 @@ public class TrieH {
         ArrayList<String> results = new ArrayList<String>();
         TrieNodeH curr = getNode(prefix);
         if(curr != null){
-            findAllChildWords(curr, results, prefix);
+            findAllChildWords(curr, results);
             return results;
         }
         return results;
     }
 
-    public void findAllChildWords(TrieNodeH curr, ArrayList<String> results, String prefix){
+    public void findAllChildWords(TrieNodeH curr, ArrayList<String> results){
         if(curr.isLast){
             results.add(curr.string);
         }
 
         for(Character c : curr.children.keySet()){
-            findAllChildWords(curr.children.get(c), results, prefix);
+            findAllChildWords(curr.children.get(c), results);
         }
     }
 }

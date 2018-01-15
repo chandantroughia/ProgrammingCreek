@@ -18,7 +18,7 @@ public class MeetingRoomsII {
         });
 
         PriorityQueue<Integer> pq = new PriorityQueue<>();
-        pq.offer(intervals[0]);
+        pq.offer(intervals[0].end);
 
         for(int i = 1; i < intervals.length; i++){
             if(intervals[i].start >= pq.peek()){

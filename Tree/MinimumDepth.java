@@ -8,7 +8,7 @@ public class MinimumDepth {
      * Definition for a binary/BS tree node.
      *                5
      *               / \
-     *             4   8      Result : [ [5,4,11,2], [5,8,4,5] ] to sum = 22
+     *             4   8
      *            /   / \
      *           11  13  4
      *          /  \    / \

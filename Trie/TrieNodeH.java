@@ -5,7 +5,8 @@ import java.util.HashMap;
 
 public class TrieNodeH {
 
-    TrieH root;private char character;
+    TrieH root;
+    private char character;
     String string; //--> in case autocomplete is needed
     boolean isLast;
     HashMap<Character, TrieNodeH> children = new HashMap<>();

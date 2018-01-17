@@ -12,7 +12,7 @@ public class MergeKSortedLists {
             this.val = x;
         }
     }
-    
+
 
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists==null||lists.length==0)

@@ -1,6 +1,5 @@
-/*package Heaps;
+package Heaps;
 
-import sun.jvm.hotspot.utilities.Interval;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -8,27 +7,49 @@ import java.util.PriorityQueue;
 
 public class MeetingRoomsII {
 
-    public int minMeetingRooms(Interval[] intervals){
-        if(intervals.length == 0 || intervals == null) return 0;
+    static class Interval{
+        int start;
+        int end;
+        public Interval(int start, int end){
+            this.start = start;
+            this.end = end;
+        }
+    }
 
-        Arrays.sort(intervals, new Comparator<Interval>(){
-            public int compare(Interval one, Interval two){
-                return one.start - two.start;
+    public static int getMeetingRoomsRequired(Interval[] intervals){
+        Arrays.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval o1, Interval o2) {
+                return o1.start - o2.start;
             }
         });
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
         pq.offer(intervals[0].end);
+        int count = 1;
 
         for(int i = 1; i < intervals.length; i++){
-            if(intervals[i].start >= pq.peek()){
-                pq.poll();
-                pq.offer(intervals[i].end);
+            if(intervals[i].start < pq.peek()){
+                count++;
             }else{
-                pq.offer(intervals[i].end);
+                pq.poll();
             }
+            pq.offer(intervals[i].end);
         }
 
-        return pq.size();
+        return count;
     }
-}*/
+
+    public static void main(String[] args) {
+        Interval one = new Interval(1, 3);
+        Interval two = new Interval(2, 6);
+        Interval three = new Interval(8, 10);
+        Interval four = new Interval(15, 18);
+        Interval five = new Interval(19, 22);
+        Interval six = new Interval(21, 25);
+
+        Interval[] intervals = {one, two, three, four, five, six};
+        System.out.println(getMeetingRoomsRequired(intervals));
+    }
+}
+

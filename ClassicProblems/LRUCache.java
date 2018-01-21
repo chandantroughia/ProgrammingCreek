@@ -3,16 +3,16 @@ package ClassicProblems;
 import java.util.HashMap;
 
 public class LRUCache{
-
     int capacity;
     Node head;
     Node end;
     HashMap<Integer, Node> map = new HashMap<>();
 
+
     class Node{
         int key;
         int value;
-        Node prev;
+        Node previous;
         Node next;
 
         public Node(int key, int value){
@@ -21,6 +21,7 @@ public class LRUCache{
         }
     }
 
+    //Constructor for LRUCache
     public LRUCache(int capacity){
         this.capacity = capacity;
     }
@@ -36,27 +37,26 @@ public class LRUCache{
     }
 
     private void remove(Node n){
-        if(n.prev != null){
-            n.prev.next = n.next;
+        if(n.previous != null){
+            n.previous.next = n.next;
         }else{
             head = n.next;
         }
 
         if(n.next != null){
-            n.next.prev = n.prev;
+            n.next.previous = n.previous;
         }else{
-            end = n.prev;
+            end = n.previous;
         }
     }
 
     private void setHead(Node n){
         n.next = head;
-        n.prev = null;
+        n.previous = null;
 
         if(head != null){
-            head.prev = n;
+            head.previous = n;
         }
-
         head = n;
 
         if(end == null){
@@ -64,7 +64,7 @@ public class LRUCache{
         }
     }
 
-    public void set(int key, int value){
+    public void put(int key, int value){
         if(map.containsKey(key)){
             Node old = map.get(key);
             old.value = value;
@@ -72,15 +72,15 @@ public class LRUCache{
             setHead(old);
         }else{
             Node created = new Node(key, value);
-            if(map.size() >= capacity){
+            if(map.size() >= this.capacity){
                 map.remove(end.key);
                 remove(end);
                 setHead(created);
-            }else{
+            }
+            else{
                 setHead(created);
             }
             map.put(key, created);
         }
     }
-
 }

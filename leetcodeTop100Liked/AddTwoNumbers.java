@@ -1,49 +1,60 @@
-package ClassicProblems;
+package leetcodeTop100Liked;
 
 /*
-*
-*   List one =  7 5 9 4 6
-*   List two = 8 4
-*   Sum = 5 0 0 5 6
+*       Something like this:: (the lists defined below int the main function are different)
+*       Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+*       Output: 7 -> 0 -> 8
+*       Explanation: 342 + 465 = 807.
 *
 * */
 
+class ListNode {
+    int val;
+    ListNode next;
+    public ListNode(int val){
+        this.val = val;
+    }
+}
 
 class List{
-
     ListNode head1, head2;
 
-    public ListNode addTwoNodes(ListNode one, ListNode two) {
+
+    public ListNode addTwoNodes(ListNode one, ListNode two){
+        ListNode temp = null;
         ListNode prev = null;
         ListNode result = null;
-        ListNode temp = null;
+
         int sum = 0;
 
-        while (one != null || two != null) {
+        while(one != null || two != null){
             sum = sum / 10;
 
-            if (one != null) {
+            if(one != null){
                 sum += one.val;
                 one = one.next;
             }
 
-            if (two != null) {
+            if(two != null){
                 sum += two.val;
                 two = two.next;
             }
 
             temp = new ListNode(sum % 10);
 
-            if (result == null) {
+            if(result == null){
                 result = temp;
-            }else {
+            }else{
                 prev.next = temp;
             }
             prev = temp;
         }
-        if(sum / 10 == 1) {
-            temp.next = new ListNode(sum/10);
+
+        if(sum / 10 >= 1){
+            ListNode newNode = new ListNode(1);
+            temp.next = newNode;
         }
+
         return result;
     }
 
@@ -80,5 +91,3 @@ public class AddTwoNumbers {
         list.printList(rs);
     }
 }
-
-

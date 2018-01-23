@@ -9,7 +9,7 @@ public class LRUCache{
     HashMap<Integer, Node> map = new HashMap<>();
 
 
-    class Node{
+    private static class Node{
         int key;
         int value;
         Node previous;
